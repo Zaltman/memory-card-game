@@ -1,0 +1,61 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+  box-sizing: border-box;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+#mainHeader {
+  font-size: xx-large;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  /* padding: 15px; */
+}
+#titleCont,
+#scoreCont {
+  padding: 15px;
+}
+
+#description {
+  font-size: large;
+}
+
+#cardsCont {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.cardCont {
+  display: flex;
+  margin: 15px;
+  flex-direction: column-reverse;
+}
+
+.card {
+  height: 200px;
+  background-color: aqua;
+  border: solid 2px black;
+}
+
+.cardTitle {
+  position: absolute;
+  /* margin-top: -44px;
+  margin-left: 17px; */
+  /* margin-bottom: 35px; */
+  color: aliceblue;
+  padding: 0px 8px;
+  max-width: 198px;
+  font-size: 20px;
+  background-color: rgba(0, 0, 0, 0.596);
+}
