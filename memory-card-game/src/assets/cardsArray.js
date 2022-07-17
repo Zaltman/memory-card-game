@@ -24,7 +24,7 @@ cardsObjArray[10] = { link: cardsObjArray[10], name: 'Adjudicator Rick' };
 cardsObjArray[11] = { link: cardsObjArray[11], name: 'Agency Director' };
 
 cardsObjArray.forEach((element, index) => {
-  element.wasPicked = false;
+  element.wasPicked = true;
   element.isRendering = false;
   element.index = index;
 });
