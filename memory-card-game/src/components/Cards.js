@@ -1,12 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import cardsObjArray from '../assets/cardsArray';
 import Card from './Card';
 import uniqid from 'uniqid';
 import { ReactDOM } from 'react';
+import { HighScoreContext, ScoreContext } from '../App';
 
 export default function Cards(props) {
   const [cardsArray, setCardsObjArray] = useState(cardsObjArray);
-  const [score, setScore] = useState(0);
+  const { score, setScore } = useContext(ScoreContext);
+  const { highscore, setHighscore } = useContext(HighScoreContext);
   let newArray = [...cardsArray];
 
   function getStateCardsArray() {
@@ -34,6 +36,10 @@ export default function Cards(props) {
     setCardsObjArray(newArray);
   }
 
+  function cleanScore() {
+    setScore(0);
+  }
+
   function set4CardsToRender() {
     for (let i = 0; i < 4; i++) {
       activateCard();
@@ -52,16 +58,29 @@ export default function Cards(props) {
     if (index === null) {
       return;
     }
+    let updatedScore = score;
+    let updatedHighscore = highscore;
+    let ifHighscoreSet = () => {
+      if (updatedScore >= updatedHighscore) {
+        setHighscore(updatedScore);
+      }
+    };
 
     let newArray = getStateCardsArray();
     if (newArray[index].wasPicked === true) {
       alert('gg');
+      ifHighscoreSet();
       restartGame();
       cleanAllIsRenderingCards();
       set4CardsToRender();
+      cleanScore();
       return;
     }
     newArray[index].wasPicked = true;
+    updatedScore += 1;
+    setScore(updatedScore);
+    ifHighscoreSet();
+
     cleanAllIsRenderingCards();
     set4CardsToRender();
   };
