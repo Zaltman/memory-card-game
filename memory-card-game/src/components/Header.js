@@ -6,7 +6,7 @@ export default function Header(props) {
     <header id="mainHeader">
       <div id="titleCont">
         <div className="title">Memory game</div>
-        <div id="description">A short description for game</div>
+        <div id="description">Don't click on the same picture again and get points!</div>
       </div>
       <Scoreboard score={score} highscore={highscore} />
     </header>

@@ -58,8 +58,7 @@ export default function Cards(props) {
     if (index === null) {
       return;
     }
-    let updatedScore = score;
-    let updatedHighscore = highscore;
+
     let ifHighscoreSet = () => {
       if (updatedScore >= updatedHighscore) {
         setHighscore(updatedScore);
@@ -67,8 +66,10 @@ export default function Cards(props) {
     };
 
     let newArray = getStateCardsArray();
+    let updatedScore = score;
+    let updatedHighscore = highscore;
+
     if (newArray[index].wasPicked === true) {
-      alert('gg');
       ifHighscoreSet();
       restartGame();
       cleanAllIsRenderingCards();
@@ -76,11 +77,11 @@ export default function Cards(props) {
       cleanScore();
       return;
     }
+
     newArray[index].wasPicked = true;
     updatedScore += 1;
     setScore(updatedScore);
     ifHighscoreSet();
-
     cleanAllIsRenderingCards();
     set4CardsToRender();
   };
