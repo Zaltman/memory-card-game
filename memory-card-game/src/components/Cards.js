@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from 'react';
 import cardsObjArray from '../assets/cardsArray';
 import Card from './Card';
 import uniqid from 'uniqid';
-import { ReactDOM } from 'react';
 import { HighScoreContext, ScoreContext } from '../App';
 
 export default function Cards(props) {
@@ -93,14 +92,17 @@ export default function Cards(props) {
       cleanAllIsRenderingCards();
       setCardsObjArray(newArray);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div id="cardsCont">
       {cardsArray.map((cardObj) => {
+        // eslint-disable-next-line
         if (cardObj.isRendering === true) {
           return <Card cardObj={cardObj} key={uniqid()} handleCardClick={handleCardClick}></Card>;
         }
+        return null;
       })}
     </div>
   );
